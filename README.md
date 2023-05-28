@@ -1,6 +1,6 @@
-# `template-react`
+# Using React Redux With Typescript (Maksim Ivanov)
 
-Template for React repositories
+https://www.youtube.com/watch?v=WpvIihorarA
 
 ## Getting started
 

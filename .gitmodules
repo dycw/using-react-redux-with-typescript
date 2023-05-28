@@ -1,0 +1,3 @@
+[submodule "react-redux-typescript"]
+	path = react-redux-typescript
+	url = https://github.com/satansdeer/react-redux-typescript
