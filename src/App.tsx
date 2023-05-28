@@ -1,35 +1,25 @@
-import "./App.css";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import { useState } from "react";
+import NewNoteInput from "./NewNoteInput";
+import { addNote } from "./actions";
+import { State } from "./notesReducer";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-function App() {
-  const [count, setCount] = useState(0);
+export default function App() {
+  const notes = useSelector<State, State["notes"]>((state) => state.notes);
+  const dispatch = useDispatch();
+  const handleAddNote = (note: string) => {
+    dispatch(addNote(note));
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <NewNoteInput addNote={handleAddNote} />
+      <hr />
+      <ul>
+        {notes.map((note) => (
+          <li key={note}>{note}</li>
+        ))}
+      </ul>
     </>
   );
 }
-
-export default App;
